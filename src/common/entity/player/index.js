@@ -17,13 +17,20 @@ class PlayerComponent {
     }
 
     handleInputs(inputs) {
-        if(inputs.up) {
+        if(inputs.left && !inputs.right) {
             this.setRunning();
-            eventBus.emit("playerMove");
+            eventBus.emit("playerMoveLeft");
         }
-        else {
+        else if(!inputs.left && inputs.right) {
+            this.setRunning();
+            eventBus.emit("playerMoveRight");
+        }
+        else if(!inputs.left && !inputs.right) {
             this.setIdle();
             eventBus.emit("playerStop");
+        }
+        if(inputs.up && !inputs.down) {
+            eventBus.emit("playerJump");
         }
         if(this.angle !== inputs.angle) {
             this.playerState.angle = inputs.angle;

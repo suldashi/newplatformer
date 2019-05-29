@@ -26,7 +26,6 @@ resourceLoader.loadAllResources().then((resources) => {
     
     engineCore.createPlayer(0,-100);
     engineCore.createFloor(0,0);
-    engineCore.createSlopedFloor(64,0);
 
     engineCore.createCornerText();
     

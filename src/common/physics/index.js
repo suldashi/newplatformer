@@ -14,10 +14,10 @@ class Physics {
         this.colliderCallbacks = {};
     }
 
-    createBodyComponent(x,y,width,height) {
+    createBodyComponent(x,y,width,height,gravityEnabled = false) {
         let hw = width/2;
         let hh = height/2;
-        let body = new PolygonBodyComponent([new Vec2(x-hw,y-hh),new Vec2(x+hw,y-hh),new Vec2(x+hw,y+hh),new Vec2(x-hw,y+hh)]);
+        let body = new PolygonBodyComponent([new Vec2(x-hw,y-hh),new Vec2(x+hw,y-hh),new Vec2(x+hw,y+hh),new Vec2(x-hw,y+hh)],gravityEnabled);
         this.bodies.push(body);
         return body;
     }

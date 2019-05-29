@@ -1,6 +1,5 @@
 const PlayerComponent = require("./player");
 const PlayerBodyComponent = require("./player/playerBodyComponent");
-const SwitchComponent = require("./switchComponent");
 
 class EntityFactory {
     constructor() {
@@ -17,11 +16,6 @@ class EntityFactory {
         let playerBodyComponent = new PlayerBodyComponent(bodyComponent);
         this.components.push(playerBodyComponent);
         return playerBodyComponent;
-    }
-
-    createSwitchComponent(isOn) {
-        let switchComponent = new SwitchComponent(isOn);
-        return switchComponent;
     }
 
     update(delta) {
