@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="/public/site.css">
+	<script>
+	var gameConfig = {
+		debug: false,
+		imageRoot: "/public/img"
+	};
+	</script>
+</head>
+<body>
+	<div id="root"></div>
+	<div id="control-root">
+		<div class="control-large" style="background: url(/public/img/touch_control.png) no-repeat;background-color: lightgrey;border-radius: 20px; background-size: 50% 50%; background-position: 25px 25px;"></div>
+	</div>
+	<script id="shader" type="shader">
+		varying vec2 vTextureCoord;
+		float ratio = 0.2;
+		uniform sampler2D uSampler;
+		void main(void) {
+			vec4 currentColor = texture2D(uSampler, vTextureCoord);
+			gl_FragColor = vec4(currentColor.r*currentColor.a*ratio, currentColor.g*currentColor.a*ratio, currentColor.b*currentColor.a*ratio, currentColor.a*ratio);
+		}
+	</script>
+	<script src="/public/js/pixi/pixi.min.js"></script>
+	<script src="/public/js/engine.js"></script>
+</body>
+</html>
